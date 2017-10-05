@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ImageFileIO.cs" />
+    <Compile Include="Models\CollageImage.cs" />
     <Compile Include="Models\CollageTemplateImage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +55,56 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="images\11909982_514216965407774_1505282234_n.jpg" />
+    <Content Include="images\11917916_733089023490367_455923097_n.jpg" />
+    <Content Include="images\12145423_574952542655979_1483119867_n.jpg" />
+    <Content Include="images\12224472_1658873464398338_991106970_n.jpg" />
+    <Content Include="images\12292729_520194058156072_693970909_n.jpg" />
+    <Content Include="images\12317718_704103593024325_1183755476_n.jpg" />
+    <Content Include="images\12328027_1721763578102167_1773146406_n.jpg" />
+    <Content Include="images\12338707_1700731540213195_769874407_n.jpg" />
+    <Content Include="images\12353957_935327273227115_1312863114_n.jpg" />
+    <Content Include="images\12357640_1562423900684891_805984332_n%281%29.jpg" />
+    <Content Include="images\12357640_1562423900684891_805984332_n.jpg" />
+    <Content Include="images\12407184_672613139544871_1127917708_n.jpg" />
+    <Content Include="images\12424658_831382190317577_1974119092_n.jpg" />
+    <Content Include="images\12501596_477402659123677_1951229306_n.jpg" />
+    <Content Include="images\12599474_763953270370798_2115123091_n.jpg" />
+    <Content Include="images\12912391_994595400578464_1505887220_n.jpg" />
+    <Content Include="images\12918019_259344277745687_1030646342_n.jpg" />
+    <Content Include="images\12930784_1011908862221480_1609486320_n.jpg" />
+    <Content Include="images\12950355_482985758577972_1411617073_n.jpg" />
+    <Content Include="images\12965119_560314937463688_1027603590_n.jpg" />
+    <Content Include="images\13092459_1694535084149123_350943408_n.jpg" />
+    <Content Include="images\13098860_1120057031369961_278080547_n.jpg" />
+    <Content Include="images\13108604_483492338525127_496568566_n.jpg" />
+    <Content Include="images\13109129_1252381208124904_699447705_n.jpg" />
+    <Content Include="images\13113882_1611499042504753_1970580489_n.jpg" />
+    <Content Include="images\13118049_896534483803164_1560168009_n.jpg" />
+    <Content Include="images\13118123_1799111813651377_92949828_n.jpg" />
+    <Content Include="images\13126727_1092592767474857_418618979_n.jpg" />
+    <Content Include="images\13129439_499743616891615_1950510844_n.jpg" />
+    <Content Include="images\13130016_505916226283448_176068505_n.jpg" />
+    <Content Include="images\13150830_868374599957085_296942334_n.jpg" />
+    <Content Include="images\13166723_1599134330401976_947133537_n.jpg" />
+    <Content Include="images\13248980_1622637004729718_1423183349_n.jpg" />
+    <Content Include="images\13266682_1706821592938665_185019764_n.jpg" />
+    <Content Include="images\13267359_225159337876582_362976835_n.jpg" />
+    <Content Include="images\13380818_520000654877467_1808743165_n.jpg" />
+    <Content Include="images\13385923_553362788179437_439764276_n.jpg" />
+    <Content Include="images\13392688_260426207665715_2030390693_n.jpg" />
+    <Content Include="images\13395107_1590969817867831_973869670_n.jpg" />
+    <Content Include="images\13525260_1765179657080065_1759188288_n.jpg" />
+    <Content Include="images\13532036_937917009655027_1498222403_n.jpg" />
+    <Content Include="images\13557158_103738270061935_1703223845_n.jpg" />
+    <Content Include="images\13561636_1010248059028542_328994093_n.jpg" />
+    <Content Include="images\13584261_997641810350357_1178691269_n.jpg" />
+    <Content Include="images\13584310_960319117419344_261959857_n.jpg" />
+    <Content Include="images\13714092_873587836078984_1638076547_n.jpg" />
+    <Content Include="images\14279122_176998319394486_1673320067_n.jpg" />
+    <Content Include="images\14294877_982913261817127_1077443327_a.jpg" />
+    <Content Include="images\14334653_110544526071184_2134838106_n.jpg" />
+    <Content Include="images\14504703_300628633653368_5246413869026377728_n.jpg" />
     <Content Include="images\3color.bmp" />
     <Content Include="images\3Color2.bmp" />
     <Content Include="images\50x25.bmp" />
@@ -62,6 +113,8 @@
     <Content Include="images\output.bmp" />
     <Content Include="images\SmallSquare.bmp" />
     <Content Include="images\Squares.bmp" />
+    <Content Include="images\test1.bmp" />
+    <Content Include="images\test2.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

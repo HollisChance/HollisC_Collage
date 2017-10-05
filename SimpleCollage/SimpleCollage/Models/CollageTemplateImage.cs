@@ -26,7 +26,7 @@ namespace SimpleCollage.Models
         public CollageTemplateImage(Image templateImage)
         {
             TemplateImage = templateImage;
-            TemplateValues = new double[templateImage.Width, templateImage.Height];
+            TemplateValues = new double[templateImage.Height, templateImage.Width];
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace SimpleCollage.Models
                 for (int col = 0; col < TemplateValues.GetLength(1); ++col)
                 {
                     //Console.Write((int)TemplateValues[row, col] + " ");
-                    if (TemplateValues[row, col] > 0)
+                    if (TemplateValues[row, col] > 100)
                     {
                         Console.Write(" ");
                     }
