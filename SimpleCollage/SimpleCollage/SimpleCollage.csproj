@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collage.cs" />
     <Compile Include="Controllers\ImageFileIO.cs" />
     <Compile Include="Models\CollageImage.cs" />
     <Compile Include="Models\CollageTemplateImage.cs" />
