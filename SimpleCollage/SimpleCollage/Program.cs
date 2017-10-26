@@ -11,29 +11,57 @@ using System.Threading.Tasks;
 
 namespace SimpleCollage
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Stopwatch sw = new Stopwatch();
 
             sw.Start();
+            //testCombineImages();
+            //testCrop();
+            //MakeACollage();
+            UseMenu();
+            sw.Stop();
+            Console.WriteLine("Elapsed={0}", sw.Elapsed);
+        }
 
-            ImageFileIO io = new ImageFileIO();
-            //Image i = io.ImageFromFile(@"C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\images\needle.jpg");
-            //CollageTemplateImage c = new CollageTemplateImage(i);
-            //c.GenerateTemplateValues();
-            //c.printValues();
+        private static void UseMenu()
+        {
+            SimpleMenu menu = new SimpleMenu();
+            menu.RunCollageMenu();
+        }
 
-            //CollageImage ci = new CollageImage(i);
-            //Console.WriteLine("Average rgb: " + ci.AvgRGB);
+        private static void MakeACollage()
+        {
+            //string template = @"C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\createdImages\Squares.bmp";
+            string template = @"C:\Users\chance\Pictures\MyDrawings\Flower1.jpg";
+            string source = @"C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\images";
+            Collage testcollage = new Collage(template, source, 0.25);
+            //testcollage.scaleTemplate(.5);
+            testcollage.GenerateCollageLayout();
+            testcollage.BuildCollage(@"C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\createdImages\test3.png");
+        }
 
+        private static void test1()
+        {
+            Image i = ImageFileIO.ImageFromFile(@"C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\images\needle.jpg");
+            CollageTemplateImage c = new CollageTemplateImage(i);
+            c.GenerateTemplateValues();
+            c.printValues();
+
+            CollageImage ci = new CollageImage(i);
+            Console.WriteLine("Average rgb: " + ci.AvgRGB);
+        }
+
+        private void test2()
+        {
             // read in images
             IEnumerable<string> fileNames = Directory.EnumerateFiles(@"C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\images");
             Image[] images = new Image[fileNames.Count()];
             for (int j = 0; j < fileNames.Count(); ++j)
             {
-                images[j] = io.ImageFromFile(fileNames.ElementAt(j));
+                images[j] = ImageFileIO.ImageFromFile(fileNames.ElementAt(j));
             }
 
             List<CollageImage> cImgs = new List<CollageImage>();
@@ -43,9 +71,33 @@ namespace SimpleCollage
                 cImgs.Add(c);
                 Console.WriteLine(c.AvgRGB);
             }
+        }
 
-            sw.Stop();
-            Console.WriteLine("Elapsed={0}", sw.Elapsed);
+        private void test3()
+        {
+            Collage collage = new Collage(@"C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\images\Squares.bmp", @"C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\images");
+            collage.GenerateCollageLayout();
+
+            foreach (CollageImage ci in collage.CollageLayout)
+            {
+                Console.WriteLine(ci.AvgRGB);
+            }
+        }
+
+        private static void testCombineImages()
+        {
+            Image i1 = ImageFileIO.ImageFromFile(@"C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\images\needle.jpg");
+            Image i2 = ImageFileIO.ImageFromFile(@"C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\images\BigName.bmp");
+            Image Combined = ImageCombiner.Combine(i1, i2);
+            ImageFileIO.saveImageToFile(Combined, @"C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\createdImages\test1.png");
+        }
+
+        private static void testCrop()
+        {
+            Image i1 = ImageFileIO.ImageFromFile(@"C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\images\test2.bmp");
+            Image cropped = ImageFormatter.SquareImage(i1);
+
+            ImageFileIO.saveImageToFile(cropped, @"C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\createdImages\test2.png");
         }
     }
 }

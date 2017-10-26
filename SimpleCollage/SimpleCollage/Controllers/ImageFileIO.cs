@@ -10,7 +10,7 @@ namespace SimpleCollage.Controllers
 {
     public class ImageFileIO
     {
-        public Image ImageFromFile(string fileName)
+        public static Image ImageFromFile(string fileName)
         {
             Image img = null;
             try
@@ -26,14 +26,9 @@ namespace SimpleCollage.Controllers
             return img;
         }
 
-        public bool saveImageToFile(string image, string fileName)
+        public static void saveImageToFile(Image image, string filename)
         {
-            using (StreamWriter writer = new StreamWriter(fileName))
-            {
-                writer.Write(image);
-            }
-
-            return true;
+            image.Save(filename, System.Drawing.Imaging.ImageFormat.Png);
         }
     }
 }

@@ -5,3 +5,5 @@ C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleColl
 C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\obj\Debug\SimpleCollage.csprojResolveAssemblyReference.cache
 C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\obj\Debug\SimpleCollage.exe
 C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\obj\Debug\SimpleCollage.pdb
+C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\bin\Debug\HollisC_CIO.dll
+C:\Users\chance\Documents\Visual Studio 2015\Capstone\HollisC_Collage\SimpleCollage\SimpleCollage\bin\Debug\HollisC_CIO.pdb

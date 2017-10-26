@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleCollage.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -22,11 +23,20 @@ namespace SimpleCollage.Models
         /// <summary>
         /// Recieves an image, generates a table of average rgb values for each pixel
         /// </summary>
-        /// <param name="templateImage"></param>
-        public CollageTemplateImage(Image templateImage)
+        /// <param name="template"></param>
+        //public CollageTemplateImage(Image templateImage)
+        //{
+        //    TemplateImage = templateImage;
+        //    TemplateValues = new double[templateImage.Height, templateImage.Width];
+        //    GenerateTemplateValues();
+        //}
+
+        public CollageTemplateImage(Image template, double scale = 1)
         {
-            TemplateImage = templateImage;
-            TemplateValues = new double[templateImage.Height, templateImage.Width];
+            Image scaled = ImageFormatter.ScaleImage(template, scale, scale);
+            TemplateImage = scaled;
+            TemplateValues = new double[TemplateImage.Height, TemplateImage.Width];
+            GenerateTemplateValues();
         }
 
         /// <summary>

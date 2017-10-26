@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleCollage.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,7 +10,6 @@ namespace SimpleCollage.Models
 {
     public class CollageImage
     {
-
         // Properties
         public Image CImage { get; set; }
         public double AvgRGB { get; set; }
@@ -25,7 +25,13 @@ namespace SimpleCollage.Models
         /// <param name="img"></param>
         public CollageImage(Image img)
         {
-            CImage = img;
+            CImage = ImageFormatter.SquareImage(img);
+            getAvgRGB();
+        }
+
+        public CollageImage(Image img, int size)
+        {
+            CImage = ImageFormatter.ScaleAndSquare(img, size);
             getAvgRGB();
         }
 
@@ -64,6 +70,11 @@ namespace SimpleCollage.Models
             double b = avgB / pixelCount;
 
             AvgRGB = (r * redWeight) + (g * greenWeight) + (b * BlueWeight);
+        }
+
+        public void Resize(double scalar)
+        {
+            CImage = ImageFormatter.ScaleImage(CImage, scalar);
         }
     }
 }
