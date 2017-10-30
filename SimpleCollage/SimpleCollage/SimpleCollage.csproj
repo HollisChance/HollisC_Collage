@@ -54,6 +54,8 @@
     <Compile Include="Controllers\SimpleMenu.cs" />
     <Compile Include="Models\CollageImage.cs" />
     <Compile Include="Models\CollageTemplateImage.cs" />
+    <Compile Include="Models\ColorValue.cs" />
+    <Compile Include="Models\TemplateValue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

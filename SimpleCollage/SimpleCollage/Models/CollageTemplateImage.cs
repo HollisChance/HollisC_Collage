@@ -13,7 +13,7 @@ namespace SimpleCollage.Models
     {
         // Properties
         public Image TemplateImage { get; set; }
-        public double[,] TemplateValues { get; set; }
+        public TemplateValue[,] TemplateValues { get; set; }
 
         // constants 
         private const double redWeight = 0.33;
@@ -35,7 +35,7 @@ namespace SimpleCollage.Models
         {
             Image scaled = ImageFormatter.ScaleImage(template, scale, scale);
             TemplateImage = scaled;
-            TemplateValues = new double[TemplateImage.Height, TemplateImage.Width];
+            TemplateValues = new TemplateValue[TemplateImage.Height, TemplateImage.Width];
             GenerateTemplateValues();
         }
 
@@ -55,7 +55,7 @@ namespace SimpleCollage.Models
                         int g = tempBmp.GetPixel(col, row).G;
                         int b = tempBmp.GetPixel(col, row).B;
                         double avgValue = (r * redWeight) + (g * greenWeight) + (b * BlueWeight);
-                        TemplateValues[row, col] = avgValue;
+                        TemplateValues[row, col].AvgRGB = avgValue;
                     }
                 }
             }
@@ -68,7 +68,7 @@ namespace SimpleCollage.Models
                 for (int col = 0; col < TemplateValues.GetLength(1); ++col)
                 {
                     //Console.Write((int)TemplateValues[row, col] + " ");
-                    if (TemplateValues[row, col] > 100)
+                    if (TemplateValues[row, col].AvgRGB > 100)
                     {
                         Console.Write(" ");
                     }

@@ -13,6 +13,10 @@ namespace SimpleCollage.Models
         // Properties
         public Image CImage { get; set; }
         public double AvgRGB { get; set; }
+        public double Red { get; set; }
+        public double Green { get; set; }
+        public double Blue { get; set; }
+        public ColorValue DominantColor { get; private set; }
 
         // constants 
         private const double redWeight = 0.33;
@@ -27,12 +31,14 @@ namespace SimpleCollage.Models
         {
             CImage = ImageFormatter.SquareImage(img);
             getAvgRGB();
+            SetGreatestColorValue();
         }
 
         public CollageImage(Image img, int size)
         {
             CImage = ImageFormatter.ScaleAndSquare(img, size);
             getAvgRGB();
+            SetGreatestColorValue();
         }
 
         /// <summary>
@@ -62,19 +68,31 @@ namespace SimpleCollage.Models
                         avgB += pixelColor.B;
                         pixelCount++;
                     }
-                }                
+                }
             }
 
-            double r = avgR / pixelCount;
-            double g = avgG / pixelCount;
-            double b = avgB / pixelCount;
-
-            AvgRGB = (r * redWeight) + (g * greenWeight) + (b * BlueWeight);
+            Red = avgR / pixelCount;
+            Green = avgG / pixelCount;
+            Blue = avgB / pixelCount;
+            AvgRGB = (Red * redWeight) + (Green * greenWeight) + (Blue * BlueWeight);
         }
 
         public void Resize(double scalar)
         {
             CImage = ImageFormatter.ScaleImage(CImage, scalar);
+        }
+
+        public void SetGreatestColorValue()
+        {
+            DominantColor = ColorValue.GREEN;
+            if (Red > Green && Red > Blue)
+            {
+                DominantColor = ColorValue.RED;
+            }
+            else if (Blue > Red && Blue > Green)
+            {
+                DominantColor = ColorValue.BLUE;
+            }
         }
     }
 }

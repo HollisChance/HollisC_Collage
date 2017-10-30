@@ -53,7 +53,7 @@ namespace SimpleCollage
             {
                 for (int col = 0; col < Template.TemplateImage.Width; ++col)
                 {
-                    double value = Template.TemplateValues[col, row];
+                    double value = Template.TemplateValues[col, row].AvgRGB;
                     CollageImage closest = GetClosestImage(value);
                     CollageLayout[col, row] = closest;
                 }
