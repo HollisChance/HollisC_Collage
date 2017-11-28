@@ -11,6 +11,7 @@ namespace SimpleCollage.Controllers
     {
         public void RunCollageMenu()
         {
+            Console.WriteLine("This is no longer functional, and is unneccessary...");
             bool keepGoing = true;
             Console.WriteLine("To create a collage follow the on-screen directions. \nTo create a collage you need a template image (this is what the collage will look like) and a folder " +
                 "of images \nyou may also enter a value to scale the template to make your collage larger or smaller\n");
@@ -53,12 +54,13 @@ namespace SimpleCollage.Controllers
         {
             if (CIO.PromptForBool("Would you like to create a collage with the following settings?(y/n)\nTemplate Path: " + tempPath + "\nImages Folder Path: " + folderPath + "\nScale: " + scale, "y", "n"))
             {
-                string collageName = CIO.PromptForInput("Enter the name you want the collage saved as", false);
-                collageName = @"C:\Users\chance\Pictures\Collages\" + collageName + ".png";
-                Console.WriteLine("Your collage will be saved to " + collageName);
-                Collage testcollage = new Collage(tempPath, folderPath, scale);
-                testcollage.GenerateCollageLayout();
-                testcollage.BuildCollage(collageName);
+                Console.WriteLine("This is no longer working or needed...");
+                //string collageName = CIO.PromptForInput("Enter the name you want the collage saved as", false);
+                //collageName = @"C:\Users\chance\Pictures\Collages\" + collageName + ".png";
+                //Console.WriteLine("Your collage will be saved to " + collageName);
+                //Collage testcollage = new Collage(tempPath, folderPath, scale);
+                //testcollage.GenerateCollageLayout(true);
+                //testcollage.BuildCollage(collageName);
             }
         }
     }

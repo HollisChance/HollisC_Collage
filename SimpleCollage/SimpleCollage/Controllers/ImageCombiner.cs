@@ -27,20 +27,26 @@ namespace SimpleCollage.Controllers
             return bitmap;
         }
 
-        public static Bitmap Combine(CollageImage[,] collageLayout, int SingleImageSize)
+        public static Image Combine(CollageImage[,] collageLayout, int SingleImageSize)
         {
-            int totalWidth = SingleImageSize * collageLayout.GetLength(0);
-            int totalHeight = SingleImageSize * collageLayout.GetLength(1);
+            int totalWidth = SingleImageSize * collageLayout.GetLength(1);
+            int totalHeight = SingleImageSize * collageLayout.GetLength(0);
             Bitmap bitmap = new Bitmap(totalWidth, totalHeight);
             using (Graphics g = Graphics.FromImage(bitmap))
             {
                 int currentWidth = 0;
                 int currentHeight = 0;
-                for (int row = 0; row < collageLayout.GetLength(0); ++row)
+                Console.WriteLine("Test info");
+                Console.WriteLine(collageLayout.GetLength(0));
+                Console.WriteLine(collageLayout.GetLength(1));
+
+                for (int row = 0; row < collageLayout.GetLength(0) - 1; ++row)
                 {
-                    for (int col = 0; col < collageLayout.GetLength(1); ++col)
+                    for (int col = 0; col < collageLayout.GetLength(1) - 1; ++col)
                     {
-                        g.DrawImage(collageLayout[row, col].CImage, currentWidth, currentHeight);                        
+                        //Image currentImage = collageLayout[row, col].GetBaseImage();
+                        g.DrawImage(collageLayout[row, col].CImage, currentWidth, currentHeight);
+                        //currentImage.Dispose();                     
                         currentWidth += SingleImageSize;
                     }
                     currentHeight += SingleImageSize;

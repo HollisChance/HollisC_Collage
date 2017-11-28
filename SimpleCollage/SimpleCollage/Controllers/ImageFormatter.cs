@@ -35,7 +35,6 @@ namespace SimpleCollage.Controllers
             if (image.Width > image.Height)
             {
                 int cropVert = (image.Width - image.Height);
-                Console.WriteLine(cropVert);
                 squared = CropBitmap(image as Bitmap, cropVert / 2, 0, image.Width - cropVert, image.Height);
             }
             else if (image.Width < image.Height)
@@ -53,7 +52,6 @@ namespace SimpleCollage.Controllers
         private static Bitmap CropBitmap(Bitmap bitmap, int cropX, int cropY, int cropWidth, int cropHeight)
         {
             Rectangle rect = new Rectangle(cropX, cropY, cropWidth, cropHeight);
-            Console.WriteLine("test");
             Bitmap cropped = bitmap.Clone(rect, bitmap.PixelFormat);
             return cropped;
         }

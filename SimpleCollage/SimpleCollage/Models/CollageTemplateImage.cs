@@ -1,4 +1,5 @@
 ﻿using SimpleCollage.Controllers;
+using SimpleCollage.Enums;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,12 +14,13 @@ namespace SimpleCollage.Models
     {
         // Properties
         public Image TemplateImage { get; set; }
-        public TemplateValue[,] TemplateValues { get; set; }
+        public ColorValue[,] TemplateValues { get; set; }
 
         // constants 
         private const double redWeight = 0.33;
         private const double greenWeight = 0.33;
         private const double BlueWeight = 0.33;
+        private const int MaxHeightWidth = 150;
 
         /// <summary>
         /// Recieves an image, generates a table of average rgb values for each pixel
@@ -31,11 +33,20 @@ namespace SimpleCollage.Models
         //    GenerateTemplateValues();
         //}
 
-        public CollageTemplateImage(Image template, double scale = 1)
+        public CollageTemplateImage(Image template, ImageSize imageSize, CollageSize size = CollageSize.Medium)
         {
-            Image scaled = ImageFormatter.ScaleImage(template, scale, scale);
+            int longSide = Math.Max(template.Height, template.Width);
+            int maxPixels = (int)((double)size / (double)imageSize);
+            double scaleby = ((double)maxPixels / (double)longSide);
+            Image scaled = ImageFormatter.ScaleImage(template, scaleby, scaleby);
+            //if (scaled.Height > MaxHeightWidth || scaled.Width > MaxHeightWidth)
+            //{
+            //    double scaleBy = Math.Max(scaled.Height, scaled.Width);
+            //    double newScale = MaxHeightWidth / scaleBy;
+            //    scaled = ImageFormatter.ScaleImage(scaled, newScale, newScale);
+            //}
             TemplateImage = scaled;
-            TemplateValues = new TemplateValue[TemplateImage.Height, TemplateImage.Width];
+            TemplateValues = new ColorValue[TemplateImage.Height, TemplateImage.Width];
             GenerateTemplateValues();
         }
 
@@ -51,11 +62,17 @@ namespace SimpleCollage.Models
                 {
                     for (int col = 0; col < TemplateImage.Width; ++col)
                     {
-                        int r = tempBmp.GetPixel(col, row).R;
-                        int g = tempBmp.GetPixel(col, row).G;
-                        int b = tempBmp.GetPixel(col, row).B;
-                        double avgValue = (r * redWeight) + (g * greenWeight) + (b * BlueWeight);
-                        TemplateValues[row, col].AvgRGB = avgValue;
+                        ColorValue current = new ColorValue();
+                        Color px = tempBmp.GetPixel(col, row);
+                        current.Red = px.R;
+                        current.Green = px.G;
+                        current.Blue = px.B;
+                        current.Hue = px.GetHue();
+                        current.Saturation = px.GetSaturation();
+                        current.Brightness = px.GetBrightness();
+                        double avgValue = (current.Red * redWeight) + (current.Green * greenWeight) + (current.Blue * BlueWeight);
+                        current.AvgRGB = avgValue;
+                        TemplateValues[row, col] = current;
                     }
                 }
             }
